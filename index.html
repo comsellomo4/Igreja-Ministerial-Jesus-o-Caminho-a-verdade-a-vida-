@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMJCAV - Painel de Módulos</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#cc0000" />
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .header {
+      background-color: #cc0000;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .header h2 {
+      margin: 0;
+    }
+    .header p {
+      font-style: italic;
+      font-size: 14px;
+    }
+    .search-box {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      margin-bottom: 10px;
+    }
+    button.search-btn {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      background-color: #111;
+      border: 1px solid #cc0000;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .card:hover {
+      background-color: #1a1a1a;
+    }
+    .card h3 {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .start-btn {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .start-btn:hover {
+      background-color: #a00000;
+    }
+    .online-tag {
+      color: #00ff88;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>IGREJA MINISTERIAL JESUS O CAMINHO A VERDADE E A VIDA</h2>
+      <p>“Portanto, meus amados irmãos, sede firmes e constantes, sempre abundantes na obra do Senhor, sabendo que o vosso trabalho não é vão no Senhor.” – 1 Coríntios 15:58</p>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Pesquisar módulo...">
+      <button class="search-btn" onclick="pesquisarModulo()">Pesquisar</button>
+    </div>
+
+    <div class="module-grid" id="moduleGrid">
+      <div class="card">
+        <h3>👤 Adicionar membros da igreja <br><span class="online-tag">Online</span></h3>
+        <a class="start-btn" href="https://comsellomo4.github.io/Servi-os7/" target="_blank">Iniciar →</a>
+      </div>
+      <div class="card">
+        <h3>📚 Preparação dos cultos <br><span class="online-tag">Online</span></h3>
+        <a class="start-btn" href="https://comsellomo4.github.io/Igreja-/" target="_blank">Iniciar →</a>
+      </div>
+      <div class="card">
+        <h3>📖 Membros presentes nos cultos <br><span class="online-tag">Online</span></h3>
+        <a class="start-btn" href="https://comsellomo4.github.io/-Membros-presentes-nos-cultos-Online/" target="_blank">Iniciar →</a>
+      </div>
+      <div class="card">
+        <h3>👥 Todos os membros <br><span class="online-tag">Online</span></h3>
+        <a class="start-btn" href="https://comsellomo4.github.io/-Membros-presentes-nos-cultos-/" target="_blank">Iniciar →</a>
+      </div>
+      <div class="card">
+        <h3>😴 Membros sumidos ou inativos <br><span class="online-tag">Online</span></h3>
+        <a class="start-btn" href="https://comsellomo4.github.io/-Membros-sumidos-ou-inativos-Online/" target="_blank">Iniciar →</a>
+      </div>
+      <div class="card">
+        <h3>🛡 Apoio espiritual <br><span class="online-tag">Online</span></h3>
+        <a class="start-btn" href="https://comsellomo4.github.io/-Apoio-espiritual-Online/" target="_blank">Iniciar →</a>
+      </div>
+      <div class="card">
+        <h3>🛠 Suporte técnico<br><small>by: Jarlison</small><br><span class="online-tag">Online</span></h3>
+        <a class="start-btn" href="https://comsellomo4.github.io/Suppt-/" target="_blank">Iniciar →</a>
+      </div>
+      <div class="card">
+        <h3>🏦 Dízimos e ofertas <br><span class="online-tag">Online</span></h3>
+        <a class="start-btn" href="https://comsellomo4.github.io/D-zimos-e-ofertas-/" target="_blank">Iniciar →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function pesquisarModulo() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.module-grid .card');
+
+      cards.forEach(card => {
+        const titulo = card.textContent.toLowerCase();
+        card.style.display = titulo.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    document.getElementById('searchInput').addEventListener("keyup", function(event) {
+      if (event.key === "Enter") {
+        pesquisarModulo();
+      }
+    });
+  </script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .then(reg => console.log("Service Worker registrado com sucesso!"))
+          .catch(err => console.error("Erro ao registrar o Service Worker:", err));
+      });
+    }
+  </script>
+</body>
+</html>
